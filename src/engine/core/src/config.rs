@@ -1,5 +1,4 @@
 use enum_map::{Enum, EnumMap};
-use enumset::EnumSetType;
 use kime_engine_backend::{Key, KeyCode, ModifierState};
 use kime_engine_backend_hangul::{HangulConfig, HangulData};
 use kime_engine_backend_latin::{LatinConfig, LatinData};
@@ -7,16 +6,14 @@ use maplit::btreemap;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-#[derive(Serialize, Deserialize, Debug, EnumSetType, Enum, PartialOrd, Ord)]
-#[enumset(serialize_as_list)]
+#[derive(Serialize, Deserialize, Debug, Enum, PartialOrd, Ord, PartialEq, Eq, Clone, Copy)]
 #[repr(u32)]
 pub enum InputCategory {
     Latin,
     Hangul,
 }
 
-#[derive(Serialize, Deserialize, Debug, EnumSetType, Enum, PartialOrd, Ord)]
-#[enumset(serialize_as_list)]
+#[derive(Serialize, Deserialize, Debug, Enum, PartialOrd, Ord, PartialEq, Eq, Clone, Copy)]
 #[repr(u32)]
 pub enum InputMode {
     Math,
